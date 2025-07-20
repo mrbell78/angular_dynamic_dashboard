@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -7,8 +7,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WidgetsComponent } from './component/widgets/widgets.component';
 import { Widget } from './models/dashboard';
-import { SubscriberComponent } from './pages/dashboard/widget/subscriber/subscriber.component';
 import { DashboardserviceService } from './services/dashboardservice.service';
+import { MatIcon } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-root',
@@ -16,21 +17,20 @@ import { DashboardserviceService } from './services/dashboardservice.service';
     RouterOutlet,
     MatCardModule,
     MatButtonModule,
-    WidgetsComponent
+    WidgetsComponent,
+    MatIcon,
+    MatMenuModule
+    
 
   ],
-  providers: [DashboardserviceService],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.css',
+  providers:[DashboardserviceService]
 })
 export class AppComponent {
   title = 'dashboard';
-  //store = Inject(DashboardserviceService);
-   widgets: Widget[] = [];
-  constructor(private service:DashboardserviceService){
-      this.widgets = this.service.widgets();
-  };
-
- 
-  
+  store = inject(DashboardserviceService);
+   add(w: Widget) {
+    this.store.addWidgets(w); // ✅ Safe to write signal here
+  }
 }

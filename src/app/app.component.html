@@ -1,4 +1,20 @@
-@for (w of widgets ; track w.id) {
+<div class="header">
+  <h2>Chanel DashBoard</h2>
+<button mat-raised-button [matMenuTriggerFor]="widgetMenu">
+  <mat-icon>add_circle</mat-icon>
+  Add Widget
+</button>
+<mat-menu #widgetMenu="matMenu">
+ @for(w of store.widgetsToAdd(); track w.id){
+   <button mat-menu-item (click)="add(w)">{{w.label}}</button>
+ } @empty{
+   <button mat-menu-item >No Widgets avaialbe</button>
+ }
+</mat-menu>
+</div>
+<div class="dashboard-widget">
+  @for (w of store.addedWidgets() ; track w.id) {
   <app-widgets [data]="w"></app-widgets>
 }
 
+</div>

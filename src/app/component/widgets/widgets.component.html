@@ -1,6 +1,14 @@
 <div class="contianer mat-elevation-z3">
-  <h1>  {{data().label}}</h1>
+  <h1 class="m-0">  {{data().label}}</h1>
+
+  <button mat-icon-button class="settings-button" (click)="showOptions.set(true)">
+    <mat-icon>settings</mat-icon>
+  </button>
 
   <ng-container [ngComponentOutlet]="data().content"/>
+
+  @if(showOptions()){
+    <app-widget-options [data]="data()" [(showOptions)]="showOptions"/>
+  }
   
 </div>
