@@ -1,5 +1,8 @@
-<div class="contianer mat-elevation-z3">
-  <h1 class="m-0">  {{data().label}}</h1>
+<div class="contianer mat-elevation-z3" [style.grid-area]="gridArea()" 
+[style.background-color]="backgroundColor()"
+[style.color]="textColor()"
+>
+  <p class="label">  {{data().label}}</p>
 
   <button mat-icon-button class="settings-button" (click)="showOptions.set(true)">
     <mat-icon>settings</mat-icon>

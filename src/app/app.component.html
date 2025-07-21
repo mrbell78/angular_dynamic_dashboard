@@ -12,7 +12,7 @@
  }
 </mat-menu>
 </div>
-<div class="dashboard-widget">
+<div #dashboard class="dashboard-widget">
   @for (w of store.addedWidgets() ; track w.id) {
   <app-widgets [data]="w"></app-widgets>
 }

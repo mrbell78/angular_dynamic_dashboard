@@ -32,3 +32,22 @@
     border-radius: 12px;
     
 }
+
+.move-forward-button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -5px;
+}
+
+.move-backward-button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -5px;
+}
+.delete{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
